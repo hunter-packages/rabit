@@ -30,10 +30,12 @@
 *.pyc
 *.mpi
 *.exe
-*.txt
 *tmp*
 *.rabit
 *.mock
 dmlc-core
 recommonmark
 recom
+_builds
+_logs
+_install
