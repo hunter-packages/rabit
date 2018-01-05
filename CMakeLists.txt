@@ -43,8 +43,6 @@ if(RABIT_BUILD_TESTS)
   endif()
 endif()
 
-message("rabit_libs: ${rabit_libs}")
-
 # Installation (https://github.com/forexample/package-example) {
 
 # Layout. This works for all platforms:
