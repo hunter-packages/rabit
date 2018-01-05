@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(rabit VERSION 1.0.0)
+project(rabit VERSION 0.0.0)
 
 option(RABIT_BUILD_TESTS "Build rabit tests" OFF)
 option(RABIT_BUILD_MPI "Build MPI" OFF)
