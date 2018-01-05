@@ -36,6 +36,4 @@
 dmlc-core
 recommonmark
 recom
-_builds
-_logs
-_install
+_*
