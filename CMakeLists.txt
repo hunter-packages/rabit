@@ -1,9 +1,18 @@
 cmake_minimum_required(VERSION 3.0)
 
+include("cmake/HunterGate.cmake")
+HunterGate(
+  URL "https://github.com/ruslo/hunter/archive/v0.19.222.tar.gz"
+  SHA1 "f5b23171088aec5d8476b2e0117dbf0ebedf3cc5"
+  )
+
 project(rabit VERSION 0.0.0)
 
 option(RABIT_BUILD_TESTS "Build rabit tests" OFF)
 option(RABIT_BUILD_MPI "Build MPI" OFF)
+
+hunter_add_package(dmlc-core)
+find_package(dmlc CONFIG REQUIRED)
 
 add_library(rabit src/allreduce_base.cc src/allreduce_robust.cc src/engine.cc src/c_api.cc)
 add_library(rabit_base src/allreduce_base.cc src/engine_base.cc src/c_api.cc)
@@ -25,7 +34,8 @@ foreach(lib ${rabit_libs})
   target_include_directories(${lib} PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"    
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/rabit>"
-    ) 
+    )
+  target_link_libraries(${lib} PUBLIC dmlc::dmlc)
 endforeach()
 
 if(RABIT_BUILD_TESTS)
