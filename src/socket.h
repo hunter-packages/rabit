@@ -457,21 +457,21 @@ struct SelectHelper {
    * \param fd file descriptor to check status
    */
   inline bool CheckRead(SOCKET fd) const {
-    return FD_ISSET(fd, &read_set) != 0;
+    return FD_ISSET(fd, const_cast<fd_set*>(&read_set)) != 0;
   }
   /*!
    * \brief Check if the descriptor is ready for write
    * \param fd file descriptor to check status
    */
   inline bool CheckWrite(SOCKET fd) const {
-    return FD_ISSET(fd, &write_set) != 0;
+    return FD_ISSET(fd, const_cast<fd_set*>(&write_set)) != 0;
   }
   /*!
    * \brief Check if the descriptor has any exception
    * \param fd file descriptor to check status
    */
   inline bool CheckExcept(SOCKET fd) const {
-    return FD_ISSET(fd, &except_set) != 0;
+    return FD_ISSET(fd, const_cast<fd_set*>(&except_set)) != 0;
   }
   /*!
    * \brief wait for exception event on a single descriptor
